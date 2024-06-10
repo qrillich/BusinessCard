@@ -28,11 +28,25 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import tech.qrillich.business_card.ui.theme.BusinessCardTheme
+
+
+val largeTextStyle: TextStyle = TextStyle(
+    color = Color.LightGray,
+    fontSize = 32.sp,
+    fontWeight = FontWeight.Light
+)
+
+val smallTextStyle: TextStyle = TextStyle(
+    color = Color.LightGray,
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Light
+)
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,8 +54,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BusinessCardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    BusinessCard(modifier = Modifier.padding(innerPadding))
+                Scaffold(modifier = Modifier.fillMaxSize()) {
+                    BusinessCard(modifier = Modifier.padding(it))
                 }
             }
         }
@@ -57,35 +71,28 @@ fun BusinessCard(modifier: Modifier = Modifier) {
     ) {
 
         Column(
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(bottom = 75.dp),
+            modifier = Modifier.align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Image(
                 painter = painterResource(id = R.drawable.android_logo),
                 contentDescription = stringResource(id = R.string.android_logo_content_description),
-                modifier = Modifier
-                    .size(150.dp)
+                modifier = Modifier.size(150.dp)
             )
             Text(
                 text = stringResource(id = R.string.full_name),
-                color = Color.LightGray,
-                fontSize = 35.sp,
-                fontWeight = FontWeight.Light
+                style = largeTextStyle
             )
             Text(
                 text = stringResource(id = R.string.title),
-                color = Color.LightGray,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Light
+                style = smallTextStyle
             )
         }
         Column(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(15.dp)
+                .padding(16.dp)
         ) {
             CardItem(
                 text = stringResource(id = R.string.phone),
@@ -114,12 +121,10 @@ fun CardItem(text: String, imageVector: ImageVector) {
             colorFilter = ColorFilter.lighting(Color.White, Color.White),
             contentDescription = stringResource(id = R.string.material_icon_content_description)
         )
-        Spacer(modifier = Modifier.size(30.dp))
+        Spacer(modifier = Modifier.size(32.dp))
         Text(
             text = text,
-            fontSize = 15.sp,
-            color = Color.LightGray,
-            fontWeight = FontWeight.Light
+            style = smallTextStyle
         )
     }
 }
