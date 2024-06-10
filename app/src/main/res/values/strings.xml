@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Business Card</string>
+    <string name="full_name">Kirill Nazarov</string>
+    <string name="title">Java Backend Dev</string>
+    <string name="phone">+79581785690</string>
+    <string name="nickname">\@QRillich</string>
+    <string name="email">qrillich@gmail.com</string>
+    <string name="android_logo_content_description">Android Logo</string>
+    <string name="material_icon_content_description">Material Icon</string>
+</resources>
